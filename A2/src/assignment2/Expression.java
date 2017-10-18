@@ -27,9 +27,8 @@ public class Expression  {
 		expressionString = expressionString.replaceAll("\\s", "");
 		String pattern = "(?<![+-])(?=[*/+-[\\\\]()])|(?<=[*/+-[\\\\]()])(?![+-])";
 
-		for (final String element : expressionString.split(pattern)) {
+		for (final String element : expressionString.split(pattern))
 			tokenList.add(element);
-		}
 
 		// ADD YOUR CODE ABOVE HERE
 	}
