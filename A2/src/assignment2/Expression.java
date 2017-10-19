@@ -24,6 +24,7 @@ public class Expression  {
 
 		// ADD YOUR CODE BELOW HERE
 
+		// Remove all spaces and use regex to split expressionString
 		expressionString = expressionString.replaceAll("\\s", "");
 		String pattern = "(?<![+-])(?=[*/+-[\\\\]()])|(?<=[*/+-[\\\\]()])(?![+-])";
 
@@ -57,8 +58,10 @@ public class Expression  {
 				case "/":
 				case "++":
 				case "--":
-				case "]":
 					operatorStack.push(strToken);
+					break;
+				case "]":
+					valueStack.push(Math.abs(valueStack.pop()));
 					break;
 				case ")":
 					String operator = operatorStack.pop();
@@ -84,29 +87,7 @@ public class Expression  {
 						case "--":
 							valueStack.push(valueStack.pop() - 1);
 							break;
-						case "]":
-							valueStack.push(Math.abs(valueStack.pop()));
-							break;
 					}
-
-					// if (operator.equals("+")) {
-					// 	valueStack.push(valueStack.pop() + valueStack.pop());
-					// } else if (operator.equals("-")) {
-					// 	valueStack.push(-1*valueStack.pop() + valueStack.pop());
-					// } else if (operator.equals("*")) {
-					// 	valueStack.push(valueStack.pop() * valueStack.pop());
-					// } else if (operator.equals("/")) {
-					// 	int divisor = valueStack.pop();
-					// 	int dividend = valueStack.pop();
-					// 	valueStack.push(dividend / divisor);
-					// } else if (operator.equals("++")) {
-					// 	valueStack.push(valueStack.pop() + 1);
-					// } else if (operator.equals("--")) {
-					// 	valueStack.push(valueStack.pop() - 1);
-					// } else if (operator.equals("]")) {
-					// 	valueStack.push(Math.abs(valueStack.pop()));
-					// }
-
 					break;
 				default:
 					valueStack.push(Integer.parseInt(strToken));
