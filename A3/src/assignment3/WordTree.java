@@ -97,12 +97,13 @@ public class WordTree {
         WordTreeNode lastPrefixNode = getPrefixNode(prefix);
         ArrayList<String> listOfMatches = new ArrayList<String>();
 
-        if (lastPrefixNode.isEndOfWord())
-            listOfMatches.add(lastPrefixNode.toString());
-
         // if (prefix.equals(lastPrefixNode.toString()))
-        if (prefix.length() == lastPrefixNode.toString().length())
+        if (prefix.length() == lastPrefixNode.toString().length()) {
+            if (lastPrefixNode.isEndOfWord())
+                listOfMatches.add(lastPrefixNode.toString());
+
             treeTraversal(listOfMatches, lastPrefixNode);
+        }
 
         return listOfMatches;
 

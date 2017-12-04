@@ -48,13 +48,17 @@ public class TesterA3starter {
 
         // For debugging, we suggest you use a smaller set of words such as the ones shown in the PDF.
 
-        // Collections.addAll(list, "a", "and", "ax", "dog", "door", "dot");
-        Collections.addAll(list, "boy", "bod", "---", "G");
+        Collections.addAll(list, "a", "and", "ax", "dog", "door", "dot", "");
+        // Collections.addAll(list, "boy", "bod", "---", "G");
 
         WordTree wordTree = new WordTree();
         wordTree.loadWords(list);
+        
+        Set<String> hs = new HashSet<>();
+        hs.addAll(list);
 
         System.out.println("list contains " + list.size() + " words");
+        System.out.println("list contains " + hs.size() + " unique words");
 
         // Test if the contains() method works, print input and output
         // e.g.: try door, an, cat (should return true, false, and false respectively)
@@ -69,10 +73,11 @@ public class TesterA3starter {
         System.out.println("WordTree contains 'dot' = "  + wordTree.contains("dot")  + " (true)");
         System.out.println("WordTree contains 'a' = "    + wordTree.contains("a")    + " (true)");
         System.out.println("WordTree contains 'an' = "   + wordTree.contains("an")   + " (false)");
-        System.out.println("WordTree contains 'boy' = "  + wordTree.contains("boy")  + " (true)");
-        System.out.println("WordTree contains 'BOD' = "  + wordTree.contains("BOD")  + " (true)");
-        System.out.println("WordTree contains '---' = "  + wordTree.contains("---")  + " (true)");
-        System.out.println("WordTree contains 'G' = "    + wordTree.contains("G")    + " (true)");
+        System.out.println("WordTree contains '' = "     + wordTree.contains("")     + " (true)");
+        // System.out.println("WordTree contains 'boy' = "  + wordTree.contains("boy")  + " (true)");
+        // System.out.println("WordTree contains 'BOD' = "  + wordTree.contains("BOD")  + " (false)");
+        // System.out.println("WordTree contains '---' = "  + wordTree.contains("---")  + " (true)");
+        // System.out.println("WordTree contains 'G' = "    + wordTree.contains("G")    + " (true)");
 
         // Test if getPrefix works, print input and output
         // e.g.: "door", "any", "cat" should return "door", "an", and "" respectively
@@ -82,8 +87,8 @@ public class TesterA3starter {
         System.out.println("longest prefix of door = " + wordTree.getPrefix("door"));
         System.out.println("longest prefix of any = "  + wordTree.getPrefix("any"));
         System.out.println("longest prefix of cat = "  + wordTree.getPrefix("cat"));
-        System.out.println("longest prefix of --------------------------------- = " + wordTree.getPrefix("---------------------------------"));
-        System.out.println("longest prefix of BODYBUILDING = " + wordTree.getPrefix("BODYBUILDING"));
+        // System.out.println("longest prefix of --------------------------------- = " + wordTree.getPrefix("---------------------------------"));
+        // System.out.println("longest prefix of BODYBUILDING = " + wordTree.getPrefix("BODYBUILDING"));
 
         // Test getListPrefixMatches, print input and output
         // Try prefixes "a", "do", "c" (should return [a, and, ax], [dog, door, dot], [ ] respectively)
@@ -93,7 +98,8 @@ public class TesterA3starter {
         System.out.println("a = "    + wordTree.getListPrefixMatches("a"));
         System.out.println("do = "   + wordTree.getListPrefixMatches("do"));
         System.out.println("c = "    + wordTree.getListPrefixMatches("c"));
-        System.out.println("prob = "  + wordTree.getListPrefixMatches("prob"));
+        System.out.println("'' = "   + wordTree.getListPrefixMatches("").size());
+        // System.out.println("prob = "  + wordTree.getListPrefixMatches("prob"));
 
     }
 }
